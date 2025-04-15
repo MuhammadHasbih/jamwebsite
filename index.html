@@ -13,6 +13,9 @@
             background: black;
             width: 100%;
             height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
         
         .bg {
@@ -20,6 +23,7 @@
             height: 100vh;
             position: absolute;
             z-index: -1;
+            transition: opacity 0.5s ease;
         }
         
         .ubuntu {
@@ -89,7 +93,8 @@
             padding: 0px;
             position: absolute;
             color: #fff;
-            transition: all 5s ease, color 1s ease;
+            transition: all 0.5s ease, color 0.5s ease;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
         
         .jam {
@@ -98,6 +103,7 @@
             left: 50%;
             bottom: 50%;
             transform: translate(-50%, calc(50% - 0px));
+            font-weight: bold;
         }
         
         .ucapan {
@@ -106,54 +112,59 @@
             bottom: 50%;
             text-align: center;
             transform: translate(-50%, calc(50% + 100px));
+            width: 100%;
         }
         
         .quotes {
             left: 50%;
-            bottom: 0;
-            transform: translate(-50%, 0%);
+            bottom: 20px;
+            transform: translateX(-50%);
             text-align: center;
             font-size: 15pt;
             text-shadow: 0px 0px 10px #000;
             z-index: 2;
+            max-width: 90%;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
         
         .kontrol {
             margin: 20px;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             position: absolute;
-            width: 200px;
+            width: 250px;
             border-radius: 10px;
-            left: -220px;
-            transition: all 1 ease;
+            left: -270px;
+            transition: all 0.3s ease;
             z-index: 99;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
         }
         
         .panah {
             content: '';
-            width: 10px;
-            height: 10px;
+            width: 15px;
+            height: 15px;
             position: absolute;
-            top: calc(50% - 5px);
-            right: -30px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-bottom: none;
-            border-left: none;
-            border-radius: 2px;
-            border-top-left-radius: 3px;
-            border-bottom-right-radius: 3px;
+            top: calc(50% - 7.5px);
+            right: -25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 3px;
             transform: rotate(45deg);
             z-index: 50;
+            cursor: pointer;
+            box-shadow: 2px -2px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
         
         #color-picker {
             width: 100%;
+            margin-top: 10px;
         }
         
         .note {
             color: white;
-            transition: all 2s ease;
+            transition: all 0.5s ease;
             opacity: 0;
             position: absolute;
             top: 50%;
@@ -161,7 +172,11 @@
             transform: translate(-50%, -50%);
             font-size: 20pt;
             text-align: center;
-            width: 100vh;
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
         }
         
         .kotak {
@@ -183,6 +198,7 @@
             background: rgba(255, 255, 255, 0.2);
             animation: animate 20s linear infinite;
             bottom: -150px;
+            border-radius: 50%;
             transition: all 1s ease;
         }
         
@@ -231,10 +247,11 @@
             left: 50%;
             bottom: 50%;
             transform: translate(-50%, 50%) scale(0);
-            transition: 3s all ease;
+            transition: all 1s ease;
+            opacity: 0.7;
         }
         
-        .bulat span:nth-child(1) {
+        .bulat span {
             position: absolute;
             top: 0;
             left: 0;
@@ -242,31 +259,19 @@
             height: 100%;
             border: 2px solid #fff;
             border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
-            transition: 0.5s;
+            transition: all 0.5s ease;
+        }
+        
+        .bulat span:nth-child(1) {
             animation: animate2 6s linear infinite;
         }
         
         .bulat span:nth-child(2) {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid #fff;
-            border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
-            transition: 0.5s;
             animation: animate3 4s linear infinite;
         }
         
         .bulat span:nth-child(3) {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 5px solid #fff;
-            border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
-            transition: 0.5s;
+            border-width: 5px;
             animation: animate2 10s linear infinite;
         }
         
@@ -274,9 +279,15 @@
             position: absolute;
             font-size: 10px;
             color: #FFFFFF;
-            bottom: 0px;
-            right: 0px;
+            bottom: 5px;
+            right: 5px;
             opacity: 0.3;
+            z-index: 100;
+        }
+        
+        .custom-control-label {
+            cursor: pointer;
+            user-select: none;
         }
         
         @keyframes animate {
@@ -310,44 +321,59 @@
         
         @media only screen and (max-width: 900px),
         screen and (max-height: 700px) {
-            .jam,
-            .ucapan {
-                transition: all 1s ease;
-            }
             .jam {
-                font-size: 50pt;
+                font-size: 70pt;
                 transform: translate(-50%, calc(50% - 0px));
             }
             .ucapan {
-                font-size: 15pt;
-                transform: translate(-50%, calc(50% + 50px));
+                font-size: 18pt;
+                transform: translate(-50%, calc(50% + 70px));
             }
             .quotes,
             .note {
-                font-size: 15pt;
+                font-size: 12pt;
+            }
+            .bulat {
+                width: 400px;
+                height: 400px;
+            }
+            .kontrol {
+                width: 200px;
+                left: -220px;
+            }
+        }
+        
+        @media only screen and (max-width: 500px) {
+            .jam {
+                font-size: 50pt;
+            }
+            .ucapan {
+                font-size: 14pt;
+                transform: translate(-50%, calc(50% + 50px));
+            }
+            .quotes {
+                font-size: 10pt;
+                bottom: 10px;
+            }
+            .note {
+                font-size: 14pt;
+                padding: 15px;
             }
             .bulat {
                 width: 300px;
                 height: 300px;
             }
-        }
-        
-        @media only screen and (max-width: 500px) {
-            .ucapan {
-                font-size: 10pt;
-            }
-            .quotes {
-                font-size: 7pt;
-            }
-            .note {
-                font-size: 10pt;
+            .kontrol {
+                width: 180px;
+                left: -200px;
+                padding: 15px;
             }
         }
     </style>
 </head>
 
 <body onload="init()">
-    <div class="kontrol" onload="readStorage()">
+    <div class="kontrol">
         <div class="panah"></div>
         <div class="custom-control custom-radio">
             <input type="radio" class="custom-control-input" id="customRadio0" name="example1" checked>
@@ -393,8 +419,9 @@
             <input type="radio" class="custom-control-input" id="customRadio9" name="example1">
             <label class="custom-control-label" for="customRadio9">RGB Gaming :v</label>
         </div>
-        <input class="btn mt-3" id="color-picker" value='#0079FF' onclick="onClickWarna()" />
+        <input type="text" class="form-control mt-3" id="color-picker" value='#0079FF'>
     </div>
+    
     <div class="bg ubuntu"></div>
     <div class="bg dawn"></div>
     <div class="bg morning"></div>
@@ -407,6 +434,7 @@
     <div class="bg green"></div>
     <div class="bg blue"></div>
     <div class="bg custom"></div>
+    
     <div class="container">
         <div class="quotes">
             <p id="quotation"></p>
@@ -429,162 +457,169 @@
         </div>
         <div class="ucapan" id="quote"></div>
         <div class="note">ngeng</div>
-        
     </div>
+    
+    <div class="pengembang">Andika Sujanadi</div>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
     <script type="text/javascript">
-        gaming = false;
-        tombol = false;
-
+        // Global variables
+        let gaming = false;
+        let tombol = false;
+        let auto = true;
+        let cek = false;
+        let warna = 1;
+        let baffleEffect;
+        let colorpicker;
+        
+        // Initialize the application
         function init() {
-            bro();
-            init_auto();
-            readMode();
-            readColor();
+            checkDeveloper();
+            initAutoMode();
+            readModeFromStorage();
+            initColorPicker();
             randomQuote();
             specialEffects();
+            startTime();
+            typeWriter();
         }
+        
+        // Initialize baffle effect for text animation
         baffleEffect = baffle('.note', {
             characters: 'supercalifragilisticexpialidocious',
             speed: 150
         });
-
-        function readMode() {
-            if (localStorage.getItem("mode") != null) {
-
-            }
-            switch (localStorage.getItem("mode")) {
+        
+        // Read mode from localStorage and apply
+        function readModeFromStorage() {
+            const mode = localStorage.getItem("mode");
+            if (!mode) return;
+            
+            $('.kontrol input').prop('checked', false);
+            
+            switch (mode) {
                 case 'ubuntu':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio1").prop('checked', true);
                     ubuntu();
                     break;
                 case 'dawn':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio2").prop('checked', true);
                     dawn();
                     break;
                 case 'morning':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio3").prop('checked', true);
                     morning();
                     break;
                 case 'noon':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio4").prop('checked', true);
                     noon();
                     break;
                 case 'afternoon':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio5").prop('checked', true);
                     afternoon();
                     break;
                 case 'sunset':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio6").prop('checked', true);
                     sunset();
                     break;
                 case 'evening':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio7").prop('checked', true);
                     evening();
                     break;
                 case 'midnight':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio8").prop('checked', true);
                     midnight();
                     break;
                 case 'manual':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio10").prop('checked', true);
                     manual();
                     break;
                 case 'gaming1':
-                    $('.kontrol input').prop('checked', false);
                     $("#customRadio9").prop('checked', true);
                     gaming1();
                     gaming = true;
                     break;
                 default:
-
+                    $("#customRadio0").prop('checked', true);
             }
         }
-
-        function readColor() {
-            if (localStorage.getItem("manualColor") == null) {} else {
-                var color = $(".custom");
-                (color).css('background', localStorage.getItem("manualColor"));
-                $('#color-picker').val(localStorage.getItem("manualColor"));
+        
+        // Initialize color picker
+        function initColorPicker() {
+            const manualColor = localStorage.getItem("manualColor");
+            if (manualColor) {
+                $(".custom").css('background', manualColor);
+                $('#color-picker').val(manualColor);
             }
+            
             colorpicker = $('#color-picker').spectrum({
                 type: "text",
-                showInput: "true",
-                showAlpha: "false",
-                showButtons: "false"
-            });
-            colorpicker.on('move.spectrum', function(e, tinycolor) {
-                var hexVal = tinycolor.toHexString();
-                var color = $(".custom");
-                color.css('background', hexVal);
-                console.log(hexVal);
-                localStorage.setItem("manualColor", hexVal);
+                showInput: true,
+                showAlpha: false,
+                showButtons: false,
+                preferredFormat: "hex",
+                move: function(tinycolor) {
+                    const hexVal = tinycolor.toHexString();
+                    $(".custom").css('background', hexVal);
+                    localStorage.setItem("manualColor", hexVal);
+                },
+                change: function(tinycolor) {
+                    localStorage.setItem("mode", "manual");
+                    nofill();
+                    $('.kontrol input').prop('checked', false);
+                    $("#customRadio10").prop('checked', true);
+                    gaming = false;
+                    manual();
+                }
             });
         }
-
-        function onClickWarna() {
-            localStorage.setItem("mode", "manual");
-            nofill();
-            $('.kontrol input').prop('checked', false);
-            $("#customRadio10").prop('checked', true);
-            gaming = false;
-            manual();
-        }
-
-        function bro() {
-            namaku = $(".pengembang").text();
-            var hex, i;
-
-            var result = "";
-            for (i = 0; i < namaku.length; i++) {
-                hex = namaku.charCodeAt(i).toString(16);
+        
+        // Check developer name (security feature)
+        function checkDeveloper() {
+            const name = $(".pengembang").text();
+            let hex, result = "";
+            
+            for (let i = 0; i < name.length; i++) {
+                hex = name.charCodeAt(i).toString(16);
                 result += ("000" + hex).slice(-4);
             }
-            if (result != "0041006e00640069006b0061002000530075006a0061006e006100640069") {
+            
+            if (result !== "0041006e00640069006b0061002000530075006a0061006e006100640069") {
                 $('body').fadeOut();
             }
         }
-
+        
+        // Special effects based on color
         function specialEffects() {
-            if (localStorage.getItem("manualColor") == "#4c1130") {
-                setTimeout(function() {
-                    createNote("Mangat Din ngepush course javascriptnya :v");
-                }, 5000);
-            } else if (localStorage.getItem("manualColor") == "#000000") {
-                setTimeout(function() {
-                    createNote("Buat belajar bro, bukan buat neko neko :v");
-                }, 5000);
+            const manualColor = localStorage.getItem("manualColor");
+            
+            if (manualColor === "#4c1130") {
+                setTimeout(() => createNote("Mangat Din ngepush course javascriptnya :v"), 5000);
+            } else if (manualColor === "#000000") {
+                setTimeout(() => createNote("Buat belajar bro, bukan buat neko neko :v"), 5000);
             }
         }
-
-        function createNote(isi) {
-            $(".jam").css("font-size", "30pt").css("bottom", "calc( 50% - 50px )");
-            $(".ucapan").css("opacity", "0");
-            $(".quotes").css("opacity", "0");
-            $(".quotes").css("opacity", "0");
-            $(".bulat").css("opacity", "0");
+        
+        // Create a note with animation
+        function createNote(content) {
+            $(".jam").css({
+                "font-size": "30pt",
+                "bottom": "calc(50% - 50px)"
+            });
+            $(".ucapan, .quotes, .bulat").css("opacity", "0");
             $(".kotak li").css("opacity", "0");
-            setTimeout(function() {
-                writeNote(isi);
-            }, 3000);
+            
+            setTimeout(() => writeNote(content), 3000);
         }
-
-        function writeNote(isi) {
-            $(".note").text(isi).css("opacity", "1");
-
+        
+        // Write note with baffle effect
+        function writeNote(content) {
+            $(".note").text(content).css("opacity", "1");
+            
             baffle('.note')
                 .reveal(2000)
                 .start()
@@ -592,31 +627,29 @@
                     characters: '░░█ /<▒▓▒ ▒░▒█/ █/▒ ▒▓/█▒ ▓▒░▓ ██░ ▒░▓░ ▒░▓█',
                     speed: 150
                 });
+                
             localStorage.setItem("manualColor", "#0079FF");
         }
+        
+        // Toggle control panel
         $(".panah").click(function() {
-            if (tombol == false) {
+            tombol = !tombol;
+            
+            if (tombol) {
                 $(".panah").css("transform", "rotate(225deg)");
-                $(".kontrol").animate({
-                    left: "0px"
-                });
-                tombol = true;
-            } else if (tombol == true) {
+                $(".kontrol").animate({ left: "0px" });
+            } else {
                 $(".panah").css("transform", "rotate(45deg)");
-                $(".kontrol").animate({
-                    left: "-220px"
-                });
-                tombol = false;
+                $(".kontrol").animate({ left: "-220px" });
             }
         });
-        auto = true;
-        cek = false;
-        $(".kontrol").click(function() {
+        
+        // Handle control panel clicks
+        $(".kontrol").on("click", "input", function() {
             gaming = false;
+            
             if ($("#customRadio0").prop('checked')) {
-                if (!cek) {
-                    init_auto();
-                }
+                if (!cek) initAutoMode();
                 auto = true;
                 localStorage.setItem("mode", "auto");
                 cek = true;
@@ -624,6 +657,7 @@
                 auto = false;
                 cek = false;
             }
+            
             if ($("#customRadio1").prop('checked')) {
                 ubuntu();
                 localStorage.setItem("mode", "ubuntu");
@@ -656,699 +690,194 @@
                 localStorage.setItem("mode", "gaming1");
                 gaming = true;
             }
-            if (gaming == false) {
-                nofill();
-            }
+            
+            if (!gaming) nofill();
         });
-
-        function ubuntu() {
-            $(".ubuntu").animate({
-                opacity: "1"
-            }, 1000);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
-            white();
+        
+        // Background style functions
+        function setBackground(activeClass) {
+            $(".bg").not(activeClass).animate({ opacity: 0 }, 500);
+            $(activeClass).animate({ opacity: 1 }, 1000);
         }
-
-        function dawn() {
-            $(".dawn").animate({
-                opacity: "1"
-            }, 1000);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
-            black();
-        }
-
-        function morning() {
-            $(".morning").animate({
-                opacity: "1"
-            }, 1000);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
-            black();
-        }
-
-        function noon() {
-            $(".noon").animate({
-                opacity: "1"
-            }, 1000);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
-            black();
-        }
-
-        function afternoon() {
-            $(".afternoon").animate({
-                opacity: "1"
-            }, 1000);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
-            black();
-        }
-
-        function sunset() {
-            $(".sunset").animate({
-                opacity: "1"
-            }, 1000);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
-            white();
-        }
-
-        function evening() {
-            $(".evening").animate({
-                opacity: "1"
-            }, 1000);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
-            white();
-        }
-
-        function midnight() {
-            $(".midnight").animate({
-                opacity: "1"
-            }, 1000);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
-            white();
-        }
-
+        
+        function ubuntu() { setBackground(".ubuntu"); white(); }
+        function dawn() { setBackground(".dawn"); black(); }
+        function morning() { setBackground(".morning"); black(); }
+        function noon() { setBackground(".noon"); black(); }
+        function afternoon() { setBackground(".afternoon"); black(); }
+        function sunset() { setBackground(".sunset"); white(); }
+        function evening() { setBackground(".evening"); white(); }
+        function midnight() { setBackground(".midnight"); white(); }
+        
         function red() {
-            $(".jam").css("color", "#F00");
-            $(".ucapan").css("color", "#F00");
+            setBackground(".red");
+            $(".jam, .ucapan").css("color", "#F00");
             $(".bulat span").css("border-color", "#F00");
             $(".kotak li").css("background", "#000");
-            $(".red").animate({
-                opacity: "1"
-            }, 1000);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
             white();
         }
-
+        
         function green() {
-            $(".jam").css("color", "#0F0");
-            $(".ucapan").css("color", "#0F0");
+            setBackground(".green");
+            $(".jam, .ucapan").css("color", "#0F0");
             $(".bulat span").css("border-color", "#0F0");
             $(".kotak li").css("background", "#000");
-            $(".green").animate({
-                opacity: "1"
-            }, 1000);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
             white();
         }
-
+        
         function blue() {
-            $(".jam").css("color", "#00F");
-            $(".ucapan").css("color", "#00F");
+            setBackground(".blue");
+            $(".jam, .ucapan").css("color", "#00F");
             $(".bulat span").css("border-color", "#00F");
             $(".kotak li").css("background", "#000");
-            $(".blue").animate({
-                opacity: "1"
-            }, 1000);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".custom").animate({
-                opacity: "0"
-            }, 500);
             white();
         }
-
+        
         function manual() {
-            $(".custom").animate({
-                opacity: "1"
-            }, 1000);
-            $(".midnight").animate({
-                opacity: "0"
-            }, 500);
-            $(".dawn").animate({
-                opacity: "0"
-            }, 500);
-            $(".ubuntu").animate({
-                opacity: "0"
-            }, 500);
-            $(".morning").animate({
-                opacity: "0"
-            }, 500);
-            $(".noon").animate({
-                opacity: "0"
-            }, 500);
-            $(".afternoon").animate({
-                opacity: "0"
-            }, 500);
-            $(".sunset").animate({
-                opacity: "0"
-            }, 500);
-            $(".evening").animate({
-                opacity: "0"
-            }, 500);
-            $(".red").animate({
-                opacity: "0"
-            }, 500);
-            $(".green").animate({
-                opacity: "0"
-            }, 500);
-            $(".blue").animate({
-                opacity: "0"
-            }, 500);
+            setBackground(".custom");
             white();
         }
-        warna = 1;
-
+        
+        // RGB gaming effect
         function gaming1() {
-            if (gaming) {
-                fillblack();
-                if (warna == 1) {
-                    red();
-                } else if (warna == 2) {
-                    green();
-                } else if (warna == 3) {
-                    blue();
-                }
-                warna += 1;
-                if (warna == 4) {
-                    warna = 1;
-                }
-            }
+            if (!gaming) return;
+            
+            fillblack();
+            
+            if (warna === 1) red();
+            else if (warna === 2) green();
+            else if (warna === 3) blue();
+            
+            warna = (warna % 3) + 1;
         }
-        setInterval(gaming1, 4000);
-
+        
+        // Color scheme functions
         function black() {
-            $(".jam").css("color", "#000");
-            $(".ucapan").css("color", "#000");
-            $(".quotes").css("color", "#000");
-            $(".quotes").css("text-shadow", "0px 0px 10px #FFF");
+            $(".jam, .ucapan").css("color", "#000");
+            $(".quotes").css({
+                "color": "#000",
+                "text-shadow": "0px 0px 10px #FFF"
+            });
             $(".bulat span").css("border-color", "#000");
             $(".kotak li").css("background", "#000");
         }
-
+        
         function fillblack() {
             $(".bulat span").css("background", "#000");
         }
-
+        
         function nofill() {
             $(".bulat span").css("background", "unset");
         }
-
+        
         function white() {
-            $(".jam").css("color", "#FFF");
-            $(".ucapan").css("color", "#FFF");
-            $(".quotes").css("color", "#FFF");
-            $(".quotes").css("text-shadow", "0px 0px 10px #000");
+            $(".jam, .ucapan").css("color", "#FFF");
+            $(".quotes").css({
+                "color": "#FFF",
+                "text-shadow": "0px 0px 10px #000"
+            });
             $(".bulat span").css("border-color", "#FFF");
-            $(".kotak li").css("background", "#FFF");
+            $(".kotak li").css("background", "rgba(255, 255, 255, 0.2)");
         }
-
-        function debug() {
-            console.log('debug');
-        }
-
-        var txt = 'Halo simp ku sayang';
-        var txt2 = 'txt';
-
+        
+        // Time functions
         function checkTime(i) {
-            if (i < 10) {
-                i = "0" + i;
-            }
-            return i;
+            return i < 10 ? "0" + i : i;
         }
-        var H;
-        var M;
-        var S;
-        var starting = true;
-
+        
         function startTime() {
-            var today = new Date();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-
-            H = h;
-            M = m;
-            S = s;
-
-            if (H < 5) {
-                txt = 'Have a Good Night:)';
-                if (txt != txt2 && !starting)
-                    document.getElementById("quote").innerHTML = txt;
-                txt2 = txt;
-            } else if (H < 9) {
-                txt = 'Good Morning You:)';
-                if (txt != txt2 && !starting)
-                    document.getElementById("quote").innerHTML = txt;
-                txt2 = txt;
-            } else if (H < 12) {
-                txt = 'Be Happy Today:)';
-                if (txt != txt2 && !starting)
-                    document.getElementById("quote").innerHTML = txt;
-                txt2 = txt;
-            } else if (H < 16) {
-                txt = 'Good Afternoon Dear:)';
-                if (txt != txt2 && !starting)
-                    document.getElementById("quote").innerHTML = txt;
-                txt2 = txt;
-            } else if (H < 19) {
-                txt = 'Good Afternoon, Take a Rest:)';
-                if (txt != txt2 && !starting)
-                    document.getElementById("quote").innerHTML = txt;
-                txt2 = txt;
-            } else if (H < 23) {
-                txt = 'Good Evening Sweetie:)';
-                if (txt != txt2 && !starting)
-                    document.getElementById("quote").innerHTML = txt;
-                txt2 = txt;
-            } else if (H <= 24) {
-                txt = 'Time to Sleep, Good Night:)';
-                if (txt != txt2 && !starting)
-                    document.getElementById("quote").innerHTML = txt;
-                txt2 = txt;
+            const today = new Date();
+            let h = today.getHours();
+            let m = today.getMinutes();
+            let s = today.getSeconds();
+            
+            const greetings = [
+                { condition: h < 5, text: 'Have a Good Night:)' },
+                { condition: h < 9, text: 'Good Morning You:)' },
+                { condition: h < 12, text: 'Be Happy Today:)' },
+                { condition: h < 16, text: 'Good Afternoon Dear:)' },
+                { condition: h < 19, text: 'Good Afternoon, Take a Rest:)' },
+                { condition: h < 23, text: 'Good Evening Sweetie:)' },
+                { condition: h <= 24, text: 'Time to Sleep, Good Night:)' }
+            ];
+            
+            const greeting = greetings.find(g => g.condition)?.text || '';
+            $("#quote").text(greeting);
+            
+            if (auto && m === 0 && s === 0) {
+                if (h > 23 || h < 4) midnight();
+                else if (h < 6) dawn();
+                else if (h < 9) morning();
+                else if (h < 17) noon();
+                else if (h < 18) afternoon();
+                else if (h < 19) sunset();
+                else if (h < 23) evening();
             }
-            starting = false;
-
-            if (auto && m == 0 && s == 0) {
-                if ((h > 23) || (h < 4)) {
-                    midnight();
-                } else if (h < 6) {
-                    dawn();
-                } else if (h < 9) {
-                    morning();
-                } else if (h < 17) {
-                    noon();
-                } else if (h < 18) {
-                    afternoon();
-                } else if (h < 19) {
-                    sunset();
-                } else if (h < 23) {
-                    evening();
-                }
-            }
-
-            // add a zero in front of numbers<10
+            
             m = checkTime(m);
             s = checkTime(s);
-            document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
-            t = setTimeout(function() {
-                startTime()
-            }, 500);
+            $("#time").text(`${h}:${m}:${s}`);
+            
+            setTimeout(startTime, 500);
         }
-        startTime();
-
-        function init_auto() {
-            if ((H > 23) || (H < 4)) {
-                midnight();
-            } else if (H < 6) {
-                dawn();
-            } else if (H < 9) {
-                morning();
-            } else if (H < 17) {
-                noon();
-            } else if (H < 18) {
-                afternoon();
-            } else if (H < 19) {
-                sunset();
-            } else if (H < 23) {
-                evening();
-            } else {
-                midnight();
-            }
+        
+        // Initialize auto mode based on current time
+        function initAutoMode() {
+            const h = new Date().getHours();
+            
+            if (h > 23 || h < 4) midnight();
+            else if (h < 6) dawn();
+            else if (h < 9) morning();
+            else if (h < 17) noon();
+            else if (h < 18) afternoon();
+            else if (h < 19) sunset();
+            else if (h < 23) evening();
+            else midnight();
         }
-
-        const quotes = [{
-            "quote": "I want to see you",
-            "source": "For You"
-        }, ]
-        setInterval(randomQuote, 60000);
-
+        
+        // Quotes functionality
+        const quotes = [
+            { quote: "I want to see you", source: "For You" }
+        ];
+        
         function randomQuote() {
-            let random = quotes[Math.floor(Math.random() * quotes.length)];
-            quotation.innerText = `"${random.quote}"`;
-            source.innerText = random.source;
+            if (quotes.length === 0) return;
+            
+            const random = quotes[Math.floor(Math.random() * quotes.length)];
+            $("#quotation").text(`"${random.quote}"`);
+            $("#source").text(random.source);
         }
-
-        var i = 0;
-
-        var speed = 50;
-
+        
+        setInterval(randomQuote, 60000);
+        
+        // Typewriter effect
+        let i = 0;
+        const speed = 50;
+        const txt = 'Halo simp ku sayang';
+        
         function typeWriter() {
-            if (i < txt.length) {
-                var o = (i / txt.length * 2);
-                var o = o.toFixed(0);
-                var o2 = o - 1;
-                if (o2 < 0)
-                    o2 = 0;
-                var o3 = String(o);
-                var p = "translate(-50%,50%) scale(" + o2 + ")";
-                document.getElementById("quote").innerHTML += txt.charAt(i);
-                i++;
-                $(".jam").css("opacity", o3);
-                $(".bulat").css("transform", p).css("opacity", o2);
-                setTimeout(typeWriter, speed);
-            }
+            if (i >= txt.length) return;
+            
+            const o = Math.min(i / txt.length * 2, 1);
+            const o2 = Math.max(o - 1, 0);
+            
+            $("#quote").append(txt.charAt(i));
+            i++;
+            
+            $(".jam").css("opacity", o);
+            $(".bulat").css({
+                "transform": `translate(-50%, 50%) scale(${o2})`,
+                "opacity": o2
+            });
+            
+            setTimeout(typeWriter, speed);
         }
-        typeWriter();
+        
+        // Start RGB gaming interval if needed
+        if (localStorage.getItem("mode") === "gaming1") {
+            setInterval(gaming1, 4000);
+        }
     </script>
-    <audio autoplay loop>
-        <source src="Audio.mp3" type="audio/mpeg">
-    </audio>
 </body>
 
 </html>
